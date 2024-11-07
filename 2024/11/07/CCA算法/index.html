@@ -396,31 +396,31 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="脑机接口中的CCA算法"><a href="#脑机接口中的CCA算法" class="headerlink" title="脑机接口中的CCA算法"></a>脑机接口中的CCA算法</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>Canonical Correlation Analysis (CCA)，即典型相关分析，是一种统计方法，用于寻找两组多变量数据之间的线性关系。在脑机接口(BCI)领域中，CCA被广泛应用于从大脑信号（如EEG信号）中识别特定的模式或特征，尤其是在执行特定任务时的大脑活动模式识别上。</p>
-<h4 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h4><p>CCA算法的核心思想是通过找到两个向量空间的最佳线性组合，使得这两个线性组合之间具有最大的相关系数。对于脑机接口应用来说，这通常意味着将脑电波信号与一组已知的参考信号进行比较，以找出最相似的模式。</p>
+                <h1 id="脑机接口中的CCA算法"><a href="#脑机接口中的CCA算法" class="headerlink" title="脑机接口中的CCA算法"></a>脑机接口中的CCA算法</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Canonical Correlation Analysis (CCA)，即典型相关分析，是一种统计方法，用于寻找两组多变量数据之间的线性关系。在脑机接口(BCI)领域中，CCA被广泛应用于从大脑信号（如EEG信号）中识别特定的模式或特征，尤其是在执行特定任务时的大脑活动模式识别上。</p>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>CCA算法的核心思想是通过找到两个向量空间的最佳线性组合，使得这两个线性组合之间具有最大的相关系数。对于脑机接口应用来说，这通常意味着将脑电波信号与一组已知的参考信号进行比较，以找出最相似的模式。</p>
 <ul>
 <li><strong>输入数据</strong>：EEG信号作为第一组变量，而参考信号（如由用户想象运动产生的同步信号模型）作为第二组变量。</li>
 <li><strong>目标函数</strong>：最大化这两组变量线性组合之间的皮尔逊相关系数。</li>
 <li><strong>输出结果</strong>：最佳的线性组合及其对应的最大相关系数。</li>
 </ul>
-<h4 id="在BCI中的应用"><a href="#在BCI中的应用" class="headerlink" title="在BCI中的应用"></a>在BCI中的应用</h4><ol>
+<h2 id="在BCI中的应用"><a href="#在BCI中的应用" class="headerlink" title="在BCI中的应用"></a>在BCI中的应用</h2><ol>
 <li>**事件相关同步&#x2F;去同步(ERSP&#x2F;ERD)**：CCA可以用来检测特定任务（例如想象手部移动）时的脑电波变化。</li>
 <li><strong>频率编码</strong>：通过使用不同频率的参考信号，CCA能够区分不同频率下的脑电活动，这对于基于稳态视觉诱发电位(SSVEP)的BCI系统特别有用。</li>
-<li><strong>时空模式识别</strong>：结合时域和频域的信息，CCA可以帮助识别更复杂的脑电活动模式。</li>
+<li><strong>时空模式识别</strong>：结合时域和频域的信息，CCA可以帮助识别更复杂的脑电活动模式。<br>CCA在SSVEP中的应用<br> CCA使用了两种信号，一个是用于刺激大脑的闪烁信号，另一个是大脑相应产生的SSVEP信号。<br> 闪烁信号由于具有特定的频率，因此可根据傅里叶级数分解为sin2πft<br>, cos2πft<br>, sin4πft<br>…</li>
 </ol>
-<h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ol>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ol>
 <li><strong>预处理</strong>：对原始EEG数据进行滤波、降噪等预处理操作，确保数据质量。</li>
 <li><strong>选择参考信号</strong>：根据实验设计选取合适的参考信号，这些信号应该与预期的脑电活动模式相匹配。</li>
 <li><strong>计算CCA</strong>：利用CCA算法计算EEG数据与参考信号之间的最大相关性。</li>
 <li><strong>分类决策</strong>：根据最大相关性的值做出分类决定，比如判断用户是否正在想象某一特定动作。</li>
 <li><strong>后处理</strong>：对结果进行评估，可能需要调整参数以优化性能。</li>
 </ol>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
 <li><strong>鲁棒性强</strong>：即使在噪声较大的情况下也能有效工作。</li>
 <li><strong>计算效率高</strong>：相比其他复杂的机器学习方法，CCA的计算成本较低。</li>
 <li><strong>适应性强</strong>：适用于多种类型的脑电波信号处理任务。</li>
 </ul>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
 <li><strong>依赖先验知识</strong>：需要预先确定参考信号，这在某些情况下可能会限制其灵活性。</li>
 <li><strong>多变量假设</strong>：CCA假定所有变量都是线性相关的，这在实际应用中可能不总是成立。</li>
 </ul>
@@ -565,18 +565,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/11/07/CCA%E7%AE%97%E6%B3%95/">
+                <a href="/2024/11/07/FB-DRCCA/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="CCA算法">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="FB-DRCCA">
                         
-                        <span class="card-title">CCA算法</span>
+                        <span class="card-title">FB-DRCCA</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -586,9 +585,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-11-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-11-07
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -597,7 +596,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
